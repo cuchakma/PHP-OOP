@@ -7,7 +7,15 @@
     <title>Tasks</title>
 </head>
 <body>
+
+    <nav>
+        <ul>
+            <li><a href="../About.php">About Us</a></li>
+            <li><a href="../Contact.php">Contact Us</a></li>
+        </ul>
+    </nav>
     <ul>
+        <h1>Tasks</h1>
         <?php foreach( $data as $object ): ?>
                 <?php if( $object->completed ): ?>
                     <li>

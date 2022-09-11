@@ -1,16 +1,14 @@
 <?php
 
-require './vendor/autoload.php';
+use PHP\Router\Router;
+
+$data = require './bootstrap.php';
 
 
-use PHP\Container as Container;
-use PHP\Task as Task;
-use PHP\Database\Connection as Connection;
-use PHP\Database\QueryBuilder as QueryBuilder;
+$router = Router::load('routes.php');
 
-$build_query = new QueryBuilder( Connection::make() );
-$data = $build_query->selectAll('task');
+$request_data = isset( $_SERVER['REQUEST_URI'] ) ? trim($_SERVER['REQUEST_URI'], '/') : '';
 
-require './views/task-view.php';
+require './'.$router->direct($request_data);
 
 

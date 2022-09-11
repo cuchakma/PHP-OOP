@@ -8,9 +8,9 @@ use PDOException;
 
 class Connection {
 
-    public static function make() {
+    public static function make( $config ) {
         try{
-           return new PDO("mysql:host=localhost;dbname=project", 'root', '01906759899');
+           return new PDO("{$config['database']['connection']};dbname={$config['database']['name']}", $config['database']['username'], $config['database']['password']);
         } catch(PDOException $e) {
             die($e->getMessage());
         }
